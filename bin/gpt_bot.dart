@@ -59,6 +59,10 @@ Future main(List<String> arguments) async {
   });
 
   dart.onCallbackQuery().listen((event) async {
+    if (event.data == "start") {
+      event.teledartMessage!.reply(
+          '''Как избавиться от отека на лице после соленой   пищи? ⬇️⬇️⬇️''');
+    }
     if (event.data == "prem") {
       event.answer();
       event.teledartMessage!.replyPhoto(
@@ -90,23 +94,9 @@ Future main(List<String> arguments) async {
             ]
           ]));
     }
-//     if (event.data == "start") {
-//       // event.teledartMessage!.reply("text");
-//       var ev = event.teledartMessage!;
-//       await ev.reply(
-//           ''' Привет! Этот чат-бот создан командой Glam Calendar, чтобы наши пользователи всегда могли получить совет как сохранить молодость и красоту. ''');
-//       await ev.reply(
-//           ''' Этот бот отвечает только на вопросы касательно методов и подходов в уходе за внешностью. Все ответы бота носят исключительно рекомендательный характер и не являются обязательными к исполнению.
-// ''');
-//       await ev.reply(
-//         ''' Напиши свой вопрос с деталями, указав проблему, часть тела и возможную причину возникновения. Пример: Как избавиться от отека на лице после соленой пищи?''',
-//       );
-//     }
   });
   dart.onMessage(entityType: "*").listen((event) async {
     if (event.text?.contains("start") ?? true) {
-      event.reply(
-          '''Как избавиться от отека на лице после соленой   пищи? ⬇️⬇️⬇️''');
       return;
     }
     var user = event.chat.id.toString();
